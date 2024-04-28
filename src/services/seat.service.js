@@ -8,9 +8,7 @@ const theatre = { rowCount: 6, colCount: 10 }
 export const seatService = {
     query,
     getById,
-    save,
-    remove,
-    getEmptySeat,
+    save
 }
 
 _createSeats()
@@ -29,11 +27,6 @@ function getById(seatId) {
     return storageService.get(STORAGE_KEY, seatId)
 }
 
-function remove(seatId) {
-    // return Promise.reject('Not now!')
-    return storageService.remove(STORAGE_KEY, seatId)
-}
-
 function save(seat) {
     if (seat._id) {
         return storageService.put(STORAGE_KEY, seat)
@@ -42,23 +35,14 @@ function save(seat) {
     }
 }
 
-function getEmptySeat(price = '', isReserved = false, isSeat = true) {
+function getEmptySeat(loc, price = '', isReserved = false, isSeat = true) {
     return {
-        // loc,
+        loc,
         price,
         isReserved,
         isSeat
     }
 }
-
-// function getDefaultFilter() {
-//     return {
-//         name: '',
-//         maxPrice: '',
-//         labels: '',
-//         inStock: undefined,
-//     }
-// }
 
 function _createSeats() {
     let seats = utilService.loadFromStorage(STORAGE_KEY)
@@ -74,7 +58,8 @@ function _createDemoSeats() {
         for (let j = 0; j < theatre.colCount; j++) {
             const price = utilService.getRandomIntInclusive(1, 800)
             const isReserved = Math.random() < 0.5 ? false : true
-            seats[i][j] = _createSeat(price, isReserved)
+            const loc = { i, j }
+            seats[i][j] = _createSeat(loc, price, isReserved)
         }
     }
     utilService.saveToStorage(STORAGE_KEY, seats)
@@ -85,9 +70,6 @@ function _createSeat(loc, price) {
     seat._id = utilService.makeId()
     return seat
 }
-
-// TEST DATA
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 6', price: 980}).then(x => console.log(x))
 
 
 

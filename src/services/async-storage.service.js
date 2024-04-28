@@ -14,7 +14,10 @@ function query(entityType, delay = 500) {
 async function get(entityType, entityId) {
     try {
         const entities = await query(entityType)
-        const entity = entities.find(entity => entity._id === entityId)
+        const entity = entities.reduce((foundEntity, row) => {
+            return foundEntity || row.find(entity => entity._id === entityId)
+        }, null)
+        // const entity = entities.find(entity => entity._id === entityId)
         if (!entity) {
             throw new Error(`Get failed, cannot find entity with id: ${entityId} in: ${entityType}`)
         }

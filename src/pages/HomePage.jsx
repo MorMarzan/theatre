@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { seatService } from "../services/seat.service"
 import { SeatList } from "../cmps/SeatList"
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 
 export function HomePage() {
 
     const [seats, setSeats] = useState([])
     const [selectedSeatId, setSelectedSeatId] = useState('')
+    const navigate = useNavigate()
 
     useEffect(() => {
         _loadSeats()
@@ -17,12 +18,13 @@ export function HomePage() {
             const seats = await seatService.query()
             setSeats(seats)
         } catch (error) {
-            console.error('Error loading toys:', error)
+            console.error('Error loading seats:', error)
         }
     }
 
     function onSelecetSeat(seatId) {
         setSelectedSeatId(seatId)
+        navigate(`/seat/${seatId}`)
     }
 
     return (
@@ -44,7 +46,8 @@ export function HomePage() {
                 </div>
             </section>
 
-            <Outlet />
+            {selectedSeatId && <Outlet />}
+
 
         </div>
     )
