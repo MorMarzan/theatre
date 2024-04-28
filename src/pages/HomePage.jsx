@@ -1,14 +1,35 @@
+import { useEffect, useState } from "react"
+import { seatService } from "../services/seat.service"
+import { SeatList } from "../cmps/SeatList"
 
 export function HomePage() {
 
+    const [seats, setSeats] = useState([])
+
+    useEffect(() => {
+        _loadSeats()
+    }, [])
+
+    async function _loadSeats() {
+        try {
+            const seats = await seatService.query()
+            setSeats(seats)
+        } catch (error) {
+            console.error('Error loading toys:', error)
+        }
+    }
+
     return (
         <div className="main-layout full home-page">
-
             <section className="main-layout full hero">
-                <div className="section-container">
-                    <h4 className="title">Lorem ipsum dolor sit amet consectetur</h4>
-                    <h6 className="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, facilis.</h6>
-                </div>
+                {(!seats || !seats.length) ?
+                    <div>Loading</div>
+                    :
+                    <div className="section-container">
+                        <h4 className="title">Scren is this way</h4>
+                        <SeatList seats={seats} />
+                    </div>
+                }
             </section>
 
             <section className='main-layout full call-to-action'>
