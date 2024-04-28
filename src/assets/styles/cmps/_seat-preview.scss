@@ -4,8 +4,13 @@
     background-color: var(--clrSecondary1);
     border-radius: calc($border-radius / 4);
     border: 1px solid rgba(0, 0, 0, 0.368);
+    cursor: pointer;
 
     &.reserved {
         filter: brightness(70%)
+    }
+
+    &.selected {
+        background-color: var(--clrPrimary2);
     }
 }

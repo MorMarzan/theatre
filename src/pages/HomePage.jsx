@@ -5,6 +5,7 @@ import { SeatList } from "../cmps/SeatList"
 export function HomePage() {
 
     const [seats, setSeats] = useState([])
+    const [selectedSeatId, setSelectedSeatId] = useState('')
 
     useEffect(() => {
         _loadSeats()
@@ -19,6 +20,11 @@ export function HomePage() {
         }
     }
 
+    function onSelecetSeat(seatId) {
+        console.log('selected', seatId)
+        setSelectedSeatId(seatId)
+    }
+
     return (
         <div className="main-layout full home-page">
             <section className="main-layout full hero">
@@ -27,7 +33,7 @@ export function HomePage() {
                     :
                     <div className="section-container">
                         <h4 className="title">Scren is this way</h4>
-                        <SeatList seats={seats} />
+                        <SeatList seats={seats} selectedSeatId={selectedSeatId} onSelecetSeat={onSelecetSeat} />
                     </div>
                 }
             </section>
