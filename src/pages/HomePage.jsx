@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { seatService } from "../services/seat.service"
 import { SeatList } from "../cmps/SeatList"
+import { Outlet } from "react-router-dom"
 
 export function HomePage() {
 
@@ -21,7 +22,6 @@ export function HomePage() {
     }
 
     function onSelecetSeat(seatId) {
-        console.log('selected', seatId)
         setSelectedSeatId(seatId)
     }
 
@@ -40,10 +40,11 @@ export function HomePage() {
 
             <section className='main-layout full call-to-action'>
                 <div className="section-container">
-                    <h4>Lorem ipsum dolor sit.</h4>
-                    <a href="mailto:mormarzan@gmail.com" className='btn'>Contact Me</a>
+                    <h4>Select your seat</h4>
                 </div>
             </section>
+
+            <Outlet />
 
         </div>
     )
