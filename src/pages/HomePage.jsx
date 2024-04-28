@@ -10,15 +10,28 @@ export function HomePage() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        _loadSeats()
+        loadSeats()
     }, [])
 
-    async function _loadSeats() {
+    async function loadSeats() {
         try {
             const seats = await seatService.query()
             setSeats(seats)
         } catch (error) {
             console.error('Error loading seats:', error)
+        }
+    }
+
+    async function onBookSeat(seat) {
+        try {
+            seatService.save({ ...seat, isReserved: !seat.isReserved })
+            const updatedSeats = seats.map(rows =>
+                rows.map(s => s._id === seat._id ? { ...s, isReserved: !s.isReserved } : s)
+            )
+            setSeats(updatedSeats)
+            onUnselectSeat()
+        } catch (error) {
+            console.error('Error booking a seat:', err)
         }
     }
 
@@ -53,7 +66,7 @@ export function HomePage() {
                 </div>
             </section>
 
-            {selectedSeatId && <Outlet />}
+            {selectedSeatId && <Outlet context={onBookSeat} />}
             <div className={"backdrop " + modalOpenClass} onClick={onUnselectSeat}></div>
 
         </div>

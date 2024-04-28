@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useOutletContext, useParams } from "react-router-dom"
 import { seatService } from "../services/seat.service"
 
 export function SeatDetails() {
 
     const { seatId } = useParams()
     const [seat, setSeat] = useState(null)
-
+    const onBookSeat = useOutletContext()
 
     useEffect(() => {
         loadSeat()
@@ -21,17 +21,13 @@ export function SeatDetails() {
         }
     }
 
-
-
     if (!seat) return
     return (
         <section className="seat-details">
-            <>
-                <p><span>Row:</span> {seat.loc.i + 1}</p>
-                <p><span>Seat number:</span> {seat.loc.j + 1}</p>
-                <p><span>Price:</span> {seat.price}$</p>
-                <button className="btn">Book Me</button>
-            </>
+            <p><span>Row:</span> {seat.loc.i + 1}</p>
+            <p><span>Seat number:</span> {seat.loc.j + 1}</p>
+            <p><span>Price:</span> {seat.price}$</p>
+            <button className="btn" onClick={() => onBookSeat(seat)}>{seat.isReserved ? 'Unbook' : 'Book'} Me</button>
         </section>
     )
 }

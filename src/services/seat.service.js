@@ -28,11 +28,8 @@ function getById(seatId) {
 }
 
 function save(seat) {
-    if (seat._id) {
-        return storageService.put(STORAGE_KEY, seat)
-    } else {
-        return storageService.post(STORAGE_KEY, seat)
-    }
+    return storageService.put(STORAGE_KEY, seat)
+
 }
 
 function getEmptySeat(loc, price = '', isReserved = false, isSeat = true) {
