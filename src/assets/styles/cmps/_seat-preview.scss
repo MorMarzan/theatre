@@ -1,0 +1,11 @@
+.seat-preview {
+    width: 25px;
+    height: 25px;
+    background-color: var(--clrSecondary1);
+    border-radius: calc($border-radius / 4);
+    border: 1px solid rgba(0, 0, 0, 0.368);
+
+    &.reserved {
+        filter: brightness(70%)
+    }
+}
