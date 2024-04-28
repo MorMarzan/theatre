@@ -27,6 +27,13 @@ export function HomePage() {
         navigate(`/seat/${seatId}`)
     }
 
+    function onUnselectSeat() {
+        setSelectedSeatId('')
+        navigate('/')
+    }
+
+    const modalOpenClass = selectedSeatId ? 'open' : ''
+
     return (
         <div className="main-layout full home-page">
             <section className="main-layout full hero">
@@ -47,7 +54,7 @@ export function HomePage() {
             </section>
 
             {selectedSeatId && <Outlet />}
-
+            <div className={"backdrop " + modalOpenClass} onClick={onUnselectSeat}></div>
 
         </div>
     )

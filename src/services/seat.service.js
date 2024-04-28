@@ -57,7 +57,7 @@ function _createDemoSeats() {
         seats[i] = []
         for (let j = 0; j < theatre.colCount; j++) {
             const price = utilService.getRandomIntInclusive(1, 800)
-            const isReserved = Math.random() < 0.5 ? false : true
+            const isReserved = Math.random() < 0.5
             const loc = { i, j }
             seats[i][j] = _createSeat(loc, price, isReserved)
         }
@@ -65,8 +65,8 @@ function _createDemoSeats() {
     utilService.saveToStorage(STORAGE_KEY, seats)
 }
 
-function _createSeat(loc, price) {
-    const seat = getEmptySeat(loc, price)
+function _createSeat(loc, price, isReserved) {
+    const seat = getEmptySeat(loc, price, isReserved)
     seat._id = utilService.makeId()
     return seat
 }

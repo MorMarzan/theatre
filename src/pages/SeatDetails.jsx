@@ -7,6 +7,7 @@ export function SeatDetails() {
     const { seatId } = useParams()
     const [seat, setSeat] = useState(null)
 
+
     useEffect(() => {
         loadSeat()
     }, [seat])
@@ -20,15 +21,17 @@ export function SeatDetails() {
         }
     }
 
+
+
+    if (!seat) return
     return (
         <section className="seat-details">
-            {seat &&
-                <>
-                    <p><span>Row:</span> {seat.loc.i + 1}</p>
-                    <p><span>Seat number:</span> {seat.loc.j + 1}</p>
-                    <p><span>Price:</span> {seat.price}$</p>
-                </>
-            }
+            <>
+                <p><span>Row:</span> {seat.loc.i + 1}</p>
+                <p><span>Seat number:</span> {seat.loc.j + 1}</p>
+                <p><span>Price:</span> {seat.price}$</p>
+                <button className="btn">Book Me</button>
+            </>
         </section>
     )
 }
