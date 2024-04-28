@@ -13,7 +13,7 @@ export function AppFooter() {
         <footer className="main-layout full app-footer">
             <div className="section-container">
                 <div className="nav">
-                    <h1 className="logo" onClick={() => navigate('/')}>Theater</h1>
+                    <h1 className="logo" onClick={() => navigate('/')}>Theatre</h1>
                     <nav className="app-nav">
                         <NavLink to="/" >Home</NavLink>
                         <NavLink to="/about" >About</NavLink>

@@ -43,7 +43,7 @@ export function AppHeader() {
 
                 <div className={"backdrop " + mobileNavOpenClass} onClick={toggleMobileNav}></div>
                 <div className="section-container flex">
-                    <h1 className="logo" onClick={() => navigate('/')}>Theater</h1>
+                    <h1 className="logo" onClick={() => navigate('/')}>Theatre</h1>
                     <img src={hamburger} alt="hamburger" className="hamburger" onClick={toggleMobileNav}></img>
                     <nav className={"flex app-nav " + mobileNavOpenClass}>
                         <img src={closeIcon} alt="close" className="close" onClick={toggleMobileNav}></img>
