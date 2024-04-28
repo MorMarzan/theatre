@@ -1,0 +1,76 @@
+.app-footer {
+    background-color: var(--clrSecondary-2);
+    padding-block: 48px;
+
+    .section-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        text-align: center;
+        row-gap: 24px;
+
+        @include for-normal-layout {
+            grid-template-columns: repeat(2, 1fr);
+            row-gap: 32px;
+            text-align: start;
+        }
+
+        &>* {
+            align-content: space-between;
+        }
+
+        .nav {
+            display: grid;
+            row-gap: 24px;
+
+            a:not(:last-of-type) {
+                padding-inline-end: 40px;
+            }
+        }
+
+        .social {
+            display: grid;
+            width: 100%;
+            grid-template-columns: 1fr;
+            justify-items: center;
+            row-gap: 24px;
+
+            @include for-normal-layout {
+                justify-items: end;
+                grid-column: unset;
+                grid-template-columns: unset;
+            }
+
+            .icons-container {
+                display: grid;
+                grid-auto-flow: column;
+                justify-self: center;
+                gap: em(16px, 15px);
+                align-items: center;
+                padding-block-start: 16px;
+
+                @include for-normal-layout {
+                    justify-self: end;
+                }
+
+                a {
+                    font-size: em(24px, 15px);
+                    cursor: pointer;
+                }
+            }
+
+        }
+
+        .opacFont {
+            opacity: 0.6;
+            text-align: center;
+
+            @include for-normal-layout {
+                text-align: end;
+            }
+
+            @include for-wide-layout {
+                text-align: start;
+            }
+        }
+    }
+}

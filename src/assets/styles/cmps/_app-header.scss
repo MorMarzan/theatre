@@ -1,0 +1,113 @@
+.app-header {
+    background-color: var(--clrPrimary1);
+    padding-block: 73px;
+    position: sticky;
+    top: 0;
+    transition: box-shadow 0.3s ease-in-out;
+    transition: padding-block 0.5s ease;
+    z-index: 10;
+
+
+    .section-container {
+        position: relative;
+        align-items: baseline;
+    }
+
+    &.scrolled {
+        box-shadow: 0 3px 5px #c4fffe38;
+        padding-block: 33px;
+    }
+
+    .hamburger,
+    .close {
+        margin-inline-start: auto;
+        cursor: pointer;
+
+        @include for-normal-layout {
+            display: none;
+        }
+    }
+
+    .hamburger {
+        width: 20px;
+        height: 17px;
+    }
+
+    .close {
+        max-width: 16px;
+    }
+
+    nav {
+
+        @include for-mobile-layout {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 70%;
+            background-color: var(--clrSecondary1);
+            flex-direction: column;
+            align-items: start;
+            padding: 56px 25px 0 48px;
+            gap: 41px;
+            z-index: 10;
+
+            transform: translateX(100%);
+            transition: transform 0.6s;
+
+
+            &.open {
+                transform: translateX(0);
+            }
+
+
+        }
+
+        @include for-normal-layout {
+
+            width: 100%;
+            align-items: center;
+
+            a:first-child {
+                margin-inline-start: 80px;
+            }
+
+            a:not(:first-child) {
+                margin-inline-start: 40px;
+            }
+
+            .switch-btn {
+                margin-inline-start: auto;
+            }
+        }
+
+        @include for-normal-layout {
+            a:first-child {
+                margin-inline-start: 50px;
+            }
+        }
+
+
+    }
+
+    .backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity 0.6s;
+
+        &.open {
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 5;
+        }
+    }
+
+}

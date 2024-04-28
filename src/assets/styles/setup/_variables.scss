@@ -1,0 +1,36 @@
+// Colors
+
+:root {
+    --clrPrimary1: #bcd4e6;
+    --clrPrimary2: #247ba0;
+    --clrPrimary3: #081c15;
+
+    --clrSecondary3: #f0efeb;
+    --clrSecondary2: #dbe7e4;
+    --clrSecondary1: #c5dedd;
+    --clrSecondaryBase: #fad2e1;
+    --clrSecondary-1: #fff1e6;
+    --clrSecondary-2: #eddcd2;
+}
+
+[data-theme="dark"] {
+    --clrPrimary1: #014E56;
+    --clrPrimary2: #F67E7E;
+    --clrPrimary3: #FFFFFF;
+
+    --clrSecondary3: #C4FFFE;
+    --clrSecondary2: #79C8C7;
+    --clrSecondary1: #2C6269;
+    --clrSecondaryBase: #004047;
+    --clrSecondary-1: #012F34;
+    --clrSecondary-2: #002529;
+}
+
+
+// border 
+$border-radius: 30px;
+
+// Breakpoints
+$mobile-breakpoint: 460px;
+$narrow-breakpoint: 690px;
+$normal-breakpoint: 1110px;

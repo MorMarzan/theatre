@@ -1,0 +1,52 @@
+.home-page {
+
+    .hero {
+        background-color: var(--clrPrimary1);
+
+        .section-container {
+            display: grid;
+            text-align: center;
+            padding-block: 30px;
+
+            @include for-wide-layout {
+                text-align: unset;
+
+            }
+        }
+    }
+
+    .call-to-action {
+        background-color: var(--clrPrimary2);
+        color: var(--clrSecondary-1);
+        padding-block: 84px;
+
+        @include for-wide-layout {
+            padding-block: 76px;
+
+        }
+
+        .section-container {
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            gap: 24px;
+            text-align: center;
+
+            @include for-normal-layout {
+                grid-auto-flow: column;
+                justify-items: normal;
+                gap: unset;
+                text-align: unset;
+            }
+        }
+
+        .btn {
+            @include btn($type: darkish);
+
+            @include for-normal-layout {
+                justify-self: end;
+            }
+        }
+    }
+
+}

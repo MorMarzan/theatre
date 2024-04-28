@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: var(--clrPrimary2);
+}
+
+html {
+    font-family: Livvic-SemiBold, sans-serif;
+    font-size: 15px;
+    line-height: lh(25px, 15px);
+
+}
+
+body {
+    color: var(--clrPrimary3);
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Livvic-Bold, sans-serif;
+    line-height: 1;
+    margin: 0;
+}
+
+h1 {
+    font-size: em(32px, 15px);
+
+    @include for-normal-layout {
+        font-size: em(40px, 15px);
+    }
+}
+
+h2 {
+    font-size: em(40px, 15px);
+
+    @include for-normal-layout {
+        font-size: em(64px, 15px);
+        line-height: lh(56px, 64px);
+    }
+
+    @include for-wide-layout {
+        font-size: em(100px, 15px);
+        line-height: 1;
+    }
+}
+
+h3 {
+    font-size: em(64px, 15px);
+    line-height: lh(56px, 64px);
+}
+
+h4 {
+    font-size: em(32px, 15px);
+
+    @include for-wide-layout {
+        font-size: em(48px, 15px);
+    }
+}
+
+h5,
+h6 {
+    font-size: em(15px, 15px);
+    line-height: lh(28px, 15px);
+
+    @include for-wide-layout {
+        font-size: em(18px, 15px);
+        line-height: lh(28px, 18px);
+    }
+}
+
+h6 {
+    font-family: Livvic-SemiBold, sans-serif;
+}
+
+
+section,
+main,
+footer {
+    // padding: 5px;
+}
+
+img {
+    width: 100%;
+}
+
+p {
+    // margin: 0 0 1em;
+    margin: 0;
+}
+
+a {
+    font-size: em(18px, 15px);
+    line-height: lh(28px, 18px);
+    text-decoration: none;
+    color: var(--clrPrimary3);
+}
+
+a:hover {
+    color: var(--clrPrimary2);
+}
+
+.btn {
+    @include btn();
+}
+
+mark {
+    background-color: unset;
+    color: var(--clrPrimary2);
+}
+
+.logo {
+    font-family: Rothek, sans-serif;
+    cursor: pointer;
+}
+
+nav {
+
+    .active {
+        color: var(--clrPrimary2);
+    }
+}

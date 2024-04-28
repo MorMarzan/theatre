@@ -1,0 +1,122 @@
+/* Breakpoint mixins */
+
+//mobile only
+@mixin for-mobile-layout {
+    @media (max-width: calc($narrow-breakpoint + 40px)) {
+        @content;
+    }
+}
+
+// @mixin for-mobile-layout {
+//     @media (max-width: calc($mobile-breakpoint + 40px)) {
+//         @content;
+//     }
+// }
+
+//mobile and up
+@mixin for-narrow-layout {
+    @media (min-width: calc($mobile-breakpoint + 40px)) {
+        @content;
+    }
+}
+
+//tablet and up
+@mixin for-normal-layout {
+    @media (min-width: calc($narrow-breakpoint + 40px)) {
+        @content;
+    }
+}
+
+//small desktop and up
+@mixin for-wide-layout {
+    @media (min-width: calc($normal-breakpoint + 40px)) {
+        @content;
+    }
+}
+
+/* Media  Mixins */
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: calc(($height / $width) * 100%);
+    }
+
+    >* {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    >img {
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+// Mixin for removing hover efects on iphone screen
+@mixin hover-supported {
+    @media not all and (pointer: coarse) {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+@mixin btn ($type: primary-light, $disabled: false) {
+    font-size: em(18px, 15px);
+    line-height: lh(28px, 18px);
+    padding: em(10px, 18px) em(30px, 18px);
+    border: 2px var(--clrPrimary3) solid;
+    border-radius: $border-radius;
+    font-family: Livvic-SemiBold, sans-serif;
+
+
+    transition: background-color 0.2s;
+    cursor: pointer;
+
+    @if $type ==secondary-light {
+        background-color: var(--clrPrimary3);
+        color: var(--clrSecondary-2);
+        border-color: var(--clrPrimary1);
+
+        &:hover {
+            background-color: var(--clrSecondary2);
+            color: var(--clrSecondary-2);
+        }
+    }
+
+    @else if $type ==darkish {
+        background-color: transparent;
+        color: var(--clrSecondary-2);
+        border-color: var(--clrSecondary-2);
+
+        &:hover {
+            background-color: var(--clrSecondary-1);
+            color: var(--clrPrimary3);
+        }
+    }
+
+    @else {
+        &:hover {
+            background-color: var(--clrPrimary3);
+            color: var(--clrSecondary-2);
+        }
+    }
+
+
+    @if $disabled ==true {
+        opacity: 0.25;
+        pointer-events: none;
+    }
+
+
+
+
+}
