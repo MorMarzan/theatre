@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { seatService } from "../services/seat.service"
 import { SeatList } from "../cmps/SeatList"
 import { Outlet, useNavigate } from "react-router-dom"
+import loader from "/images/puff.svg"
 
 export function HomePage() {
 
@@ -62,14 +63,16 @@ export function HomePage() {
     return (
         <div className="main-layout full home-page">
             <section className="main-layout full hero">
-                {(!seats || !seats.length) ?
-                    <div>Loading</div>
-                    :
-                    <div className="section-container">
-                        <h4 className="title">Scren is this way</h4>
-                        <SeatList seats={seats} selectedSeatId={selectedSeatId} onSelecetSeat={onSelecetSeat} theatre={theatre.current} />
-                    </div>
-                }
+                <div className="section-container">
+                    {(!seats || !seats.length) ?
+                        <div className="loader"><img src={loader}></img></div>
+                        :
+                        <>
+                            <h4 className="title">Scren is this way</h4>
+                            <SeatList seats={seats} selectedSeatId={selectedSeatId} onSelecetSeat={onSelecetSeat} theatre={theatre.current} />
+                        </>
+                    }
+                </div>
             </section>
 
             <section className='main-layout full call-to-action'>

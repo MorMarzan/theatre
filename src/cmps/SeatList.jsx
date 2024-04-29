@@ -1,4 +1,4 @@
-import { SeatPreveiw } from "./SeatPreveiw";
+import { SeatPreveiw } from "./SeatPreveiw"
 
 export function SeatList({ seats, onSelecetSeat, selectedSeatId, theatre }) {
 

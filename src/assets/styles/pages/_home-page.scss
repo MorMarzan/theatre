@@ -13,6 +13,16 @@
 
             }
         }
+
+        .loader {
+            width: 100%;
+            display: grid;
+            justify-items: center;
+
+            img {
+                max-width: 300px;
+            }
+        }
     }
 
     .call-to-action {

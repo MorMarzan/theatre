@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react"
-import { NavLink, useNavigate } from "react-router-dom"
+import { useEffect, useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 import hamburger from '/images/icon-hamburger.svg'
 import closeIcon from '/images/icon-close.svg'
-import { SwitchBtn } from "./SwitchBtn"
+import { SwitchBtn } from './SwitchBtn'
 
 export function AppHeader() {
 
