@@ -3,6 +3,7 @@ import { seatService } from "../services/seat.service"
 import { SeatList } from "../cmps/SeatList"
 import { Outlet, useNavigate } from "react-router-dom"
 import loader from "/images/puff.svg"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 
 export function HomePage() {
 
@@ -27,6 +28,7 @@ export function HomePage() {
             const seats = await seatService.query()
             setSeats(seats)
         } catch (error) {
+            showErrorMsg('Cannot load seats')
             console.error('Error loading seats:', error)
         }
     }
@@ -34,13 +36,15 @@ export function HomePage() {
     async function onBookSeat(seat) {
         try {
             const updatedSeat = { ...seat, isReserved: !seat.isReserved }
-            seatService.save(updatedSeat)
+            await seatService.save(updatedSeat)
             const updatedSeats = seats.map(currSeat =>
                 (currSeat._id === seat._id) ? updatedSeat : currSeat
             )
             setSeats(updatedSeats)
             onUnselectSeat()
+            showSuccessMsg('Seat was booked successfully')
         } catch (error) {
+            showErrorMsg('Cannot book the seat')
             console.error('Error booking a seat:', err)
         }
     }

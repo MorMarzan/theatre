@@ -1,0 +1,26 @@
+.user-msg {
+    padding: .2em .5em;
+    position: fixed;
+    bottom: 1em;
+    right: 50%;
+    translate: 50%;
+    border-radius: 5px;
+    font-size: em(20px, 15px);
+    border: 2px solid rgba(0, 0, 0, 0.368);
+
+    &.success {
+        background-color: var(--clrSecondary1);
+        color: var(--clrPrimary3);
+    }
+
+    &.error {
+        background-color: #F67E7E;
+        color: black;
+    }
+
+    button {
+        font-size: .5em;
+        float: right;
+        margin: .5em;
+    }
+}
