@@ -1,15 +1,17 @@
 @font-face {
     font-family: Livvic-Bold;
-    // src: url(/fonts/livvic/Livvic-Bold.ttf);
-    src: url(/theatre/fonts/Livvic/Livvic-Bold.ttf);
+    src: url(/theatre/fonts/livvic/Livvic-Bold.ttf) format('truetype');
+    // src: url(/public/fonts/Livvic/Livvic-Bold.ttf);
 }
 
 @font-face {
     font-family: Livvic-SemiBold;
-    src: url(/theatre/fonts/livvic/Livvic-SemiBold.ttf);
+    src: url(/theatre/fonts/livvic/Livvic-SemiBold.ttf) format('truetype');
+    // src: url(/public/fonts/livvic/Livvic-SemiBold.ttf);
 }
 
 @font-face {
     font-family: Rothek;
-    src: url(/theatre/fonts/livvic/rothek-4.ttf);
+    src: url(/theatre/fonts/livvic/rothek-4.ttf) format('truetype');
+    // src: url(/public/fonts/livvic/rothek-4.ttf);
 }

@@ -72,7 +72,7 @@ export function HomePage() {
                         <div className="loader"><img src={loader}></img></div>
                         :
                         <>
-                            <h4 className="title">Scren is this way</h4>
+                            <h4 className="title">Screen is this way</h4>
                             <SeatList seats={seats} selectedSeatId={selectedSeatId} onSelecetSeat={onSelecetSeat} theatre={theatre.current} />
                         </>
                     }

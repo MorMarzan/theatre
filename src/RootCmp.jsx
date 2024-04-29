@@ -1,4 +1,4 @@
-import { Route, Routes, BrowserRouter as Router } from 'react-router-dom'
+import { Route, Routes, HashRouter as Router } from 'react-router-dom'
 import './assets/styles/main.scss'
 
 import { AppHeader } from './cmps/AppHeader.jsx'
@@ -18,9 +18,9 @@ export function App() {
         <main className="main-layout full app">
           <Routes>
             <Route element={<HomePage />} path="/" >
-              <Route element={<SeatDetails />} path="/seat/:seatId" />
+              <Route element={<SeatDetails />} path="/seat/:seatId/" />
             </Route>
-            <Route element={<About />} path="/about" />
+            <Route element={<About />} path="/about/" />
           </Routes>
         </main>
         <AppFooter />
