@@ -3,12 +3,4 @@
     list-style-type: none;
     display: grid;
     gap: 20px;
-
-    .row {
-        display: grid;
-        grid-auto-flow: column;
-        justify-items: center;
-        list-style-type: none;
-        padding: 0;
-    }
 }

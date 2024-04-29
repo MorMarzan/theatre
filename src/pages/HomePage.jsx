@@ -57,7 +57,7 @@ export function HomePage() {
                     :
                     <div className="section-container">
                         <h4 className="title">Scren is this way</h4>
-                        <SeatList seats={seats} selectedSeatId={selectedSeatId} onSelecetSeat={onSelecetSeat} theatre={theatre} />
+                        <SeatList seats={seats} selectedSeatId={selectedSeatId} onSelecetSeat={onSelecetSeat} theatre={theatre.current} />
                     </div>
                 }
             </section>
