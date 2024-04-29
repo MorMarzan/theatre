@@ -64,7 +64,12 @@ export function HomePage() {
 
             <section className='main-layout full call-to-action'>
                 <div className="section-container">
-                    <h4>Select your seat</h4>
+                    <h4>Please select your seat</h4>
+                    <div className="legend">
+                        <div className="available">Available<span></span></div>
+                        <div className="reserved">Reserved<span></span></div>
+                        <div className="selected">selected<span></span></div>
+                    </div>
                 </div>
             </section>
 

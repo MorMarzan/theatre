@@ -40,11 +40,39 @@
             }
         }
 
-        .btn {
-            @include btn($type: darkish);
+        .legend {
 
-            @include for-normal-layout {
-                justify-self: end;
+            border-radius: $border-radius;
+            background-color: var(--clrPrimary1);
+            display: grid;
+            grid-auto-flow: column;
+            place-content: center;
+            padding: 10px;
+            gap: 10px;
+
+            &>* {
+                display: grid;
+                justify-items: center;
+                color: var(--clrPrimary3);
+
+            }
+
+            span {
+                width: 25px;
+                height: 25px;
+                background-color: var(--clrSecondary1);
+                border-radius: calc($border-radius / 4);
+                border: 1px solid rgba(0, 0, 0, 0.368);
+                display: block;
+
+            }
+
+            .reserved span {
+                filter: brightness(70%);
+            }
+
+            .selected span {
+                background-color: var(--clrPrimary2);
             }
         }
     }
