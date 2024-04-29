@@ -7,12 +7,19 @@ export function HomePage() {
 
     const [seats, setSeats] = useState([])
     const [selectedSeatId, setSelectedSeatId] = useState('')
+    const [timeoutId, setTimeoutId] = useState(null)
     const theatre = useRef(seatService.gTheatre)
     const navigate = useNavigate()
 
     useEffect(() => {
         loadSeats()
     }, [])
+
+    useEffect(() => {
+        return () => {
+            if (timeoutId) clearTimeout(timeoutId)
+        }
+    }, [timeoutId])
 
     async function loadSeats() {
         try {
@@ -40,9 +47,12 @@ export function HomePage() {
     function onSelecetSeat(seatId) {
         setSelectedSeatId(seatId)
         navigate(`/seat/${seatId}`)
+        if (timeoutId) clearTimeout(timeoutId)
+        setTimeoutId(setTimeout(onUnselectSeat, 10000))
     }
 
     function onUnselectSeat() {
+        if (timeoutId) clearTimeout(timeoutId)
         setSelectedSeatId('')
         navigate('/')
     }
