@@ -24,8 +24,8 @@ export function SeatDetails() {
     if (!seat) return
     return (
         <section className="seat-details">
-            <p><span>Row:</span> {seat.loc.i + 1}</p>
-            <p><span>Seat number:</span> {seat.loc.j + 1}</p>
+            <p><span>Row:</span> {seat.loc.row}</p>
+            <p><span>Seat number:</span> {seat.loc.col}</p>
             <p><span>Price:</span> {seat.price}$</p>
             <button className="btn" onClick={() => onBookSeat(seat)}>{seat.isReserved ? 'Unbook' : 'Book'} Me</button>
         </section>

@@ -14,9 +14,7 @@ function query(entityType, delay = 500) {
 async function get(entityType, entityId) {
     try {
         const entities = await query(entityType)
-        const entity = entities.reduce((foundEntity, row) => {
-            return foundEntity || row.find(entity => entity._id === entityId)
-        }, null)
+        const entity = entities.find(entity => entity._id === entityId)
         if (!entity) {
             throw new Error(`Get failed, cannot find entity with id: ${entityId} in: ${entityType}`)
         }
@@ -45,11 +43,9 @@ async function post(entityType, newEntity) {
 async function put(entityType, updatedEntity) {
     try {
         const entities = await query(entityType)
-        const currEntity = await get(entityType, updatedEntity._id)
-        const idxI = currEntity.loc.i
-        const idxJ = currEntity.loc.j
-        if (!idxI || !idxJ) throw new Error(`Update failed, cannot find entity with id: ${updatedEntity._id} in: ${entityType}`)
-        entities[idxI].splice(idxJ, 1, updatedEntity)
+        const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
+        if (idx < 0) throw new Error(`Update failed, cannot find entity with id: ${entityId} in: ${entityType}`)
+        entities.splice(idx, 1, updatedEntity)
         _save(entityType, entities)
         return updatedEntity
     } catch (error) {

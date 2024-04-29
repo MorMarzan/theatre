@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { seatService } from "../services/seat.service"
 import { SeatList } from "../cmps/SeatList"
 import { Outlet, useNavigate } from "react-router-dom"
@@ -7,6 +7,7 @@ export function HomePage() {
 
     const [seats, setSeats] = useState([])
     const [selectedSeatId, setSelectedSeatId] = useState('')
+    const theatre = useRef(seatService.gTheatre)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -24,9 +25,10 @@ export function HomePage() {
 
     async function onBookSeat(seat) {
         try {
-            seatService.save({ ...seat, isReserved: !seat.isReserved })
-            const updatedSeats = seats.map(rows =>
-                rows.map(s => s._id === seat._id ? { ...s, isReserved: !s.isReserved } : s)
+            const updatedSeat = { ...seat, isReserved: !seat.isReserved }
+            seatService.save(updatedSeat)
+            const updatedSeats = seats.map(currSeat =>
+                (currSeat._id === seat._id) ? updatedSeat : currSeat
             )
             setSeats(updatedSeats)
             onUnselectSeat()
@@ -55,7 +57,7 @@ export function HomePage() {
                     :
                     <div className="section-container">
                         <h4 className="title">Scren is this way</h4>
-                        <SeatList seats={seats} selectedSeatId={selectedSeatId} onSelecetSeat={onSelecetSeat} />
+                        <SeatList seats={seats} selectedSeatId={selectedSeatId} onSelecetSeat={onSelecetSeat} theatre={theatre} />
                     </div>
                 }
             </section>

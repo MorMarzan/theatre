@@ -1,16 +1,12 @@
 import { SeatPreveiw } from "./SeatPreveiw";
 
-export function SeatList({ seats, onSelecetSeat, selectedSeatId }) {
+export function SeatList({ seats, onSelecetSeat, selectedSeatId, theatre }) {
     return (
-        <ul className='seat-list'>
-            {seats.map((seatRows, idx) =>
-                <ul className="row" key={`row-${idx}`}>{
-                    seatRows.map(seat =>
-                        <li key={seat._id}>
-                            <SeatPreveiw seat={seat} selectedSeatId={selectedSeatId} onSelecetSeat={onSelecetSeat} />
-                        </li>
-                    )}
-                </ul>
+        <ul className='seat-list' style={{ gridTemplateColumns: 'repeat(theatre.colCount, auto)', gridTemplateRows: 'repeat(theatre.rowCount, auto)' }}>
+            {seats.map(seat =>
+                <li key={seat._id} style={{ gridColumn: seat.loc.col, grisRow: seat.loc.row }}>
+                    <SeatPreveiw seat={seat} selectedSeatId={selectedSeatId} onSelecetSeat={onSelecetSeat} />
+                </li>
             )}
         </ul>
     )

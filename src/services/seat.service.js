@@ -3,12 +3,13 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 
 const STORAGE_KEY = 'seatDB'
-const theatre = { rowCount: 6, colCount: 10 }
+const gTheatre = { rowCount: 6, colCount: 10 }
 
 export const seatService = {
     query,
     getById,
-    save
+    save,
+    gTheatre
 }
 
 _createSeats()
@@ -32,12 +33,11 @@ function save(seat) {
 
 }
 
-function getEmptySeat(loc, price = '', isReserved = false, isSeat = true) {
+function getEmptySeat(loc, price = '', isReserved = false) {
     return {
         loc,
         price,
         isReserved,
-        isSeat
     }
 }
 
@@ -50,13 +50,12 @@ function _createSeats() {
 
 function _createDemoSeats() {
     const seats = []
-    for (let i = 0; i < theatre.rowCount; i++) {
-        seats[i] = []
-        for (let j = 0; j < theatre.colCount; j++) {
-            const price = utilService.getRandomIntInclusive(1, 800)
+    for (let i = 0; i < gTheatre.rowCount; i++) {
+        for (let j = 0; j < gTheatre.colCount; j++) {
+            const price = (gTheatre.rowCount - i) * 100 + utilService.getRandomIntInclusive(1, 100)
             const isReserved = Math.random() < 0.5
-            const loc = { i, j }
-            seats[i][j] = _createSeat(loc, price, isReserved)
+            const loc = { row: i + 1, col: j + 1 }
+            seats.push(_createSeat(loc, price, isReserved))
         }
     }
     utilService.saveToStorage(STORAGE_KEY, seats)
