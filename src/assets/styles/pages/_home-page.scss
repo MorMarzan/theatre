@@ -7,11 +7,6 @@
             display: grid;
             text-align: center;
             padding-block: 30px;
-
-            @include for-wide-layout {
-                text-align: unset;
-
-            }
         }
 
         .loader {
