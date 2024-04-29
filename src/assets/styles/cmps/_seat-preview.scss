@@ -13,4 +13,14 @@
     &.selected {
         background-color: var(--clrPrimary2);
     }
+
+    span {
+        opacity: 0;
+        transition: opacity 1s;
+    }
+
+    span:hover {
+        opacity: 1;
+    }
+
 }
