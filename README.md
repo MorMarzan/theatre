@@ -1,11 +1,20 @@
 # 🎭 Mini Theatre Booking System
 
-Welcome to the Mini Theatre Booking System! This application allows you to choose and book your seat for a theatre show directly through a simple, intuitive interface. Built with React and SASS, it's designed to provide a seamless booking experience.
+Welcome to the Mini Theatre Booking System! This application allows you to choose and book your seat for a theatre show directly through a simple, intuitive interface. Built with React and SASS, it's designed to provide a seamless booking experience. Responsive design ensures that the app looks great on all devices, from desktops to mobile phones.
 
 ## 🌐 Live Demo
 
 Check out the live version of the app here:
 [Visit Mini Theatre](https://mormarzan.github.io/theatre/)
+
+## 📌 Overview of Interface
+
+Check out the live version of the app here:
+[Visit Mini Theatre](https://mormarzan.github.io/theatre/)
+![demo image](image.png)
+![demo image](image-3.png)
+![demo image](image-1.png)
+![demo image](image-2.png)
 
 ## 🛠 Built With
 
