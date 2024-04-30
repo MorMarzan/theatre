@@ -7,10 +7,10 @@ Welcome to the Mini Theatre Booking System! This application allows you to choos
 Check out the live version of the app here:
 [Visit Mini Theatre](https://mormarzan.github.io/theatre/)
 
-<img src="image.png" width="400px" alt="demo image"/>
-<img src="image-3.png" width="400px" alt="demo image"/>
-<img src="image-1.png" width="400px" alt="demo image"/>
-<img src="image-2.png" width="400px" alt="demo image"/>
+<img src="image.png" width="500px" alt="demo image"/>
+<img src="image-3.png" width="500px" alt="demo image"/>
+<img src="image-1.png" width="200px" alt="demo image"/>
+<img src="image-2.png" width="200px" alt="demo image"/>
 
 ## 🛠 Built With
 
