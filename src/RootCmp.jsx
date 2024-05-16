@@ -1,5 +1,6 @@
 import { Route, Routes, HashRouter as Router } from 'react-router-dom'
 import './assets/styles/main.scss'
+import 'animate.css'
 
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { AppFooter } from './cmps/AppFooter.jsx'
